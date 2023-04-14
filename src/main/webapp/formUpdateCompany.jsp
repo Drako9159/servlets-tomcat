@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:url value="/update-company" var="linkServletUpdateCompany"/>
+<c:url value="/home" var="linkServletUpdateCompany"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +23,8 @@
   <label for="fecha">Fecha</label>
   <input type="text" id="fecha" name="fecha" value="<fmt:formatDate value="${ company.dateApertura }" pattern="dd/MM/yyyy"/>"/>
 
-  <input type="hidden" name="id" value="${ company.id } "/>
+  <input type="hidden" name="id" value="${ company.id }"/>
+  <input type="hidden" name="action" value="update-company"/>
 
   <input type="submit"/>
 </form>

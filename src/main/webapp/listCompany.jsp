@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:url value="/delete-company" var="linkServletDeleteCompany"/>
 <c:url value="/update-company" var="linkServletUpdateCompany"/>
+<c:url value="/home" var="linkServletActionCompany"/>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: antonio
@@ -28,8 +29,8 @@
 
     <c:forEach items="${companys}" var="company">
         <li>${ company.name } - <fmt:formatDate value="${ company.dateApertura }" pattern="dd/MM/yyyy"/></li>
-        <a href="${linkServletDeleteCompany}?id=${company.id}">delete</a>
-        <a href="${linkServletUpdateCompany}?id=${company.id}">update</a>
+        <a href="${linkServletActionCompany}?action=delete-company&id=${company.id}">delete</a>
+        <a href="${linkServletActionCompany}?action=show-company&id=${company.id}">update</a>
     </c:forEach>
 
 </ul>

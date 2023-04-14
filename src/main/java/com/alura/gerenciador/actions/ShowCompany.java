@@ -1,20 +1,16 @@
-package com.alura.gerenciador.servlet;
+package com.alura.gerenciador.actions;
 
 import com.alura.gerenciador.modelo.Company;
 import com.alura.gerenciador.modelo.DB;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/update-company")
-public class updateCompanyServlet  extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+public class ShowCompany {
+    public void exect(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paramId = req.getParameter("id");
         Integer id = Integer.valueOf(paramId);
 
