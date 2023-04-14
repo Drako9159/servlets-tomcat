@@ -1,5 +1,7 @@
 package com.alura.gerenciador.servlet;
 
+import com.alura.gerenciador.modelo.Company;
+import com.alura.gerenciador.modelo.DB;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

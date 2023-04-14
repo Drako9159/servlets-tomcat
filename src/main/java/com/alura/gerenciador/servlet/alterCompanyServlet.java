@@ -1,5 +1,7 @@
 package com.alura.gerenciador.servlet;
 
+import com.alura.gerenciador.modelo.Company;
+import com.alura.gerenciador.modelo.DB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @WebServlet(urlPatterns = "/alter-company")
-public class alertCompanyServlet extends HttpServlet {
+public class alterCompanyServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Company modifiqueted");

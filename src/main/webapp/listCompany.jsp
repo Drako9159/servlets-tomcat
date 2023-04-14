@@ -1,5 +1,5 @@
 <%@ page import="java.io.PrintWriter" %>
-<%@ page import="com.alura.gerenciador.servlet.Company" %>
+<%@ page import="com.alura.gerenciador.modelo.Company" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:url value="/delete-company" var="linkServletDeleteCompany"/>

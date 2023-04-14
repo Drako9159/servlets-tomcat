@@ -1,7 +1,6 @@
-package com.alura.gerenciador.servlet;
+package com.alura.gerenciador.modelo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
