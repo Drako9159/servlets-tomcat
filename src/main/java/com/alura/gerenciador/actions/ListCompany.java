@@ -11,19 +11,12 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-public class ListCompany implements Action{
+public class ListCompany implements Action {
     public String exect(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
-
         DB database = new DB();
         List<Company> listCompany = database.getListCompany();
-
         //dispatch
         req.setAttribute("companys", listCompany);
-
-
-
         return "forward:listCompany.jsp";
 
     }
