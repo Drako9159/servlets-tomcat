@@ -1,43 +1,23 @@
 package com.alura.gerenciador.servlet;
 
 import com.alura.gerenciador.actions.*;
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-//@WebServlet(urlPatterns = "/home")
-public class ControllerPrimary extends HttpServlet {
+//@WebFilter(urlPatterns = "/home")
+public class ControllerFilter implements Filter {
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        System.out.println("Controller filter");
+
+        HttpServletRequest req = (HttpServletRequest) servletRequest;
+        HttpServletResponse resp = (HttpServletResponse) servletResponse;
+
         String paramAction = req.getParameter("action");
-/*
-        HttpSession sesion = req.getSession();
-        Boolean isUserLogged = sesion.getAttribute("loginUser") == null;
-        Boolean isActionProtected = !(paramAction.equals("login") || paramAction.equals("form-login"));
-
-        if (isUserLogged && isActionProtected) {
-            resp.sendRedirect("home?action=form-login");
-            return;
-        }
-*/
-
-        // Reflexión
-        /*
-        String nameClass = "com.alura.gerenciador.actions" + paramAction;
-        try {
-            Class clase = Class.forName(nameClass);
-            Action action = (Action) clase.newInstance();
-            String name = action.exect(req, resp);
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | ServletException | IOException e){
-            throw new ServletException(e);
-        }*/
-
 
         String name = null;
         if (paramAction.equals("list-companys")) {
@@ -85,9 +65,5 @@ public class ControllerPrimary extends HttpServlet {
         } else {
             resp.sendRedirect(typeDirectiom[1]);
         }
-
-
     }
-
-
 }
