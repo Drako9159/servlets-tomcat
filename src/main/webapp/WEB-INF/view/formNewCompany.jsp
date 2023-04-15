@@ -8,12 +8,14 @@
 </head>
 <body>
 
-<form action="${linkServletNewCompany}?action=create-company" method="post">
+<form action="${linkServletNewCompany}" method="post">
     <label for="name">Nombre</label>
     <input type="text" id="name" name="name">
 
     <label for="fecha">Fecha</label>
     <input type="text" id="fecha" name="fecha">
+
+    <input type="hidden" name="action" value="create-company"/>
 
     <input type="submit"/>
 </form>

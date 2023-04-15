@@ -2,8 +2,6 @@
 <%@ page import="com.alura.gerenciador.modelo.Company" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<c:url value="/delete-company" var="linkServletDeleteCompany"/>
-<c:url value="/update-company" var="linkServletUpdateCompany"/>
 <c:url value="/home" var="linkServletActionCompany"/>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.

@@ -12,8 +12,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class CreateCompany {
-    public void exect(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+public class CreateCompany implements Action{
+    public String exect(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("New company register");
         String nameCompany = req.getParameter("name");
         String dateCompany = req.getParameter("fecha");
@@ -42,7 +42,8 @@ public class CreateCompany {
         out.println("</body>");
         out.println("</html>");
 
-        resp.sendRedirect("home?action=list-companys");
+        //resp.sendRedirect("home?action=list-companys");
+        return "redirect:home?action=list-companys";
 
         //dispatch
         /*

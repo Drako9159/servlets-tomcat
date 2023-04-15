@@ -1,6 +1,7 @@
 package com.alura.gerenciador.servlet;
 
 import com.alura.gerenciador.actions.*;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,26 +15,56 @@ public class ControllerPrimary extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paramAction = req.getParameter("action");
+
+        /*
+        String nameClass = "com.alura.gerenciador.actions" + paramAction;
+        try {
+            Class clase = Class.forName(nameClass);
+            Action action = (Action) clase.newInstance();
+            String name = action.exect(req, resp);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | ServletException | IOException e){
+            throw new ServletException(e);
+        }*/
+
+
+        String name = null;
         if(paramAction.equals("list-companys")){
             ListCompany listCompany = new ListCompany();
-            listCompany.exect(req, resp);
+            name = listCompany.exect(req, resp);
 
         } else if (paramAction.equals("show-company")){
             ShowCompany showCompany = new ShowCompany();
-            showCompany.exect(req, resp);
+            name = showCompany.exect(req, resp);
 
         } else if (paramAction.equals("delete-company")){
             DeleteCompany deleteCompany = new DeleteCompany();
-            deleteCompany.exect(req, resp);
+            name = deleteCompany.exect(req, resp);
 
         } else if (paramAction.equals("update-company")){
             UpdateCompany updateCompany = new UpdateCompany();
-            updateCompany.exect(req, resp);
+            name = updateCompany.exect(req, resp);
+
+        } else if (paramAction.equals("form-new-company")){
+            FormNewCompany formNewCompany = new FormNewCompany();
+            name = formNewCompany.exect(req, resp);
 
         } else if (paramAction.equals("create-company")){
             CreateCompany createCompany = new CreateCompany();
-            createCompany.exect(req, resp);
+            name = createCompany.exect(req, resp);
         }
+
+
+        String[] typeDirectiom = name.split(":");
+        if(typeDirectiom[0].equals("forward")){
+            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/view/"+typeDirectiom[1]);
+            rd.forward(req, resp);
+        } else {
+            resp.sendRedirect(typeDirectiom[1]);
+        }
+
+
+
+
 
     }
 

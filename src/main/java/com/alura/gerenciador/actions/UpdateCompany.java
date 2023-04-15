@@ -12,8 +12,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class UpdateCompany {
-    public void exect(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+public class UpdateCompany implements Action {
+    public String exect(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Company modifiqueted");
         String nameCompany = req.getParameter("name");
         String dateCompany = req.getParameter("fecha");
@@ -33,6 +33,6 @@ public class UpdateCompany {
         com.setName(nameCompany);
         com.setDateApertura(dateApertura);
 
-        resp.sendRedirect("home?action=list-companys");
+        return "redirect:home?action=list-companys";
     }
 }
