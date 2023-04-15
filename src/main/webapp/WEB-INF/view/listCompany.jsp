@@ -16,6 +16,12 @@
     <title>List</title>
 </head>
 <body>
+<c:import url="logout-partial.jsp"></c:import>
+
+<h1>User: ${loginUser.login}</h1>
+<br>
+<br>
+<br>
 
 <c:if test="${not empty company}">
     <h2>Empresa ${company} registrada! <br/></h2>

@@ -6,26 +6,20 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import jakarta.servlet.http.HttpSessionActivationListener;
 
 import java.io.IOException;
 
-public class Login {
-
+public class Logout {
     public String exect(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paramLogin = req.getParameter("login");
         String paramPassword = req.getParameter("password");
 
-        DB db = new DB();
-        User usr = db.existUser(paramLogin, paramPassword);
+        HttpSession sesion = req.getSession();
+        //sesion.removeAttribute("loginUser"); // option 1
+        sesion.invalidate(); // option 2 clean all
 
-        if(usr != null){
-            HttpSession sesion = req.getSession();
-            sesion.setAttribute("loginUser", usr);
-            return "redirect:home?action=list-companys";
-        } else {
-            return "redirect:home?action=form-login";
-        }
+
+        return "redirect:home?action=form-login";
+
     };
-
 }

@@ -6,6 +6,7 @@
     <title>Title</title>
 </head>
 <body>
+<c:import url="logout-partial.jsp"></c:import>
 
 <%
     String company = (String)(request.getAttribute("company"));

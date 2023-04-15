@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -15,6 +16,16 @@ public class ControllerPrimary extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paramAction = req.getParameter("action");
+/*
+        HttpSession sesion = req.getSession();
+        Boolean isUserLogged = sesion.getAttribute("loginUser") == null;
+        Boolean isActionProtected = !(paramAction.equals("login") || paramAction.equals("form-login"));
+
+        if (isUserLogged && isActionProtected) {
+            resp.sendRedirect("home?action=form-login");
+            return;
+        }
+*/
 
         // Reflexión
         /*
@@ -29,54 +40,54 @@ public class ControllerPrimary extends HttpServlet {
 
 
         String name = null;
-        if(paramAction.equals("list-companys")){
+        if (paramAction.equals("list-companys")) {
             ListCompany listCompany = new ListCompany();
             name = listCompany.exect(req, resp);
 
-        } else if (paramAction.equals("show-company")){
+        } else if (paramAction.equals("show-company")) {
             ShowCompany showCompany = new ShowCompany();
             name = showCompany.exect(req, resp);
 
-        } else if (paramAction.equals("delete-company")){
+        } else if (paramAction.equals("delete-company")) {
             DeleteCompany deleteCompany = new DeleteCompany();
             name = deleteCompany.exect(req, resp);
 
-        } else if (paramAction.equals("update-company")){
+        } else if (paramAction.equals("update-company")) {
             UpdateCompany updateCompany = new UpdateCompany();
             name = updateCompany.exect(req, resp);
 
-        } else if (paramAction.equals("form-new-company")){
+        } else if (paramAction.equals("form-new-company")) {
             FormNewCompany formNewCompany = new FormNewCompany();
             name = formNewCompany.exect(req, resp);
 
-        } else if (paramAction.equals("create-company")){
+        } else if (paramAction.equals("create-company")) {
             CreateCompany createCompany = new CreateCompany();
             name = createCompany.exect(req, resp);
 
-        } else if (paramAction.equals("login")){
+        } else if (paramAction.equals("login")) {
             Login login = new Login();
             name = login.exect(req, resp);
 
-        } else if (paramAction.equals("form-login")){
+        } else if (paramAction.equals("form-login")) {
             FormLogin formLogin = new FormLogin();
             name = formLogin.exect(req, resp);
+
+        } else if (paramAction.equals("logout")) {
+            Logout logout = new Logout();
+            name = logout.exect(req, resp);
         }
 
 
         String[] typeDirectiom = name.split(":");
-        if(typeDirectiom[0].equals("forward")){
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/view/"+typeDirectiom[1]);
+        if (typeDirectiom[0].equals("forward")) {
+            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/view/" + typeDirectiom[1]);
             rd.forward(req, resp);
         } else {
             resp.sendRedirect(typeDirectiom[1]);
         }
 
 
-
-
-
     }
-
 
 
 }

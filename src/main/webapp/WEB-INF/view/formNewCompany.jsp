@@ -7,6 +7,7 @@
     <title>Form</title>
 </head>
 <body>
+<c:import url="logout-partial.jsp"></c:import>
 
 <form action="${linkServletNewCompany}" method="post">
     <label for="name">Nombre</label>
