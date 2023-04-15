@@ -16,6 +16,7 @@ public class ControllerPrimary extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paramAction = req.getParameter("action");
 
+        // Reflexión
         /*
         String nameClass = "com.alura.gerenciador.actions" + paramAction;
         try {
@@ -51,6 +52,14 @@ public class ControllerPrimary extends HttpServlet {
         } else if (paramAction.equals("create-company")){
             CreateCompany createCompany = new CreateCompany();
             name = createCompany.exect(req, resp);
+
+        } else if (paramAction.equals("login")){
+            Login login = new Login();
+            name = login.exect(req, resp);
+
+        } else if (paramAction.equals("form-login")){
+            FormLogin formLogin = new FormLogin();
+            name = formLogin.exect(req, resp);
         }
 
 
